@@ -5,8 +5,6 @@
   linked above is shown. The details tag has to follow the image tag. (newlines allowed)
 
 
-
-
 ```mermaid
   graph TD;
       A-->B;
