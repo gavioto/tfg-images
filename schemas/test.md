@@ -1,4 +1,4 @@
-![rendered image description](schemas/test.png)
+![rendered image description](test.png)
 <details>
   <summary>diagram source</summary>
   This details block is collapsed by default when viewed in GitHub. This hides the mermaid graph definition, while the rendered image
