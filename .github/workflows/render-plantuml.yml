@@ -16,11 +16,11 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-          
+
       - name: Get changed UML files
         id: getfile
         run: |
-          git diff-tree -r --no-commit-id --summary ${{ github.sha }} \
+          git diff-tree --no-commit-id --name-only -r ${{ github.sha }} \
           | awk -F' ' '{
             # ensure we are not trying to process deleted files
             # only process puml files
