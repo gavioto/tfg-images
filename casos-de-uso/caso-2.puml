@@ -1,0 +1,12 @@
+@startuml caso de uso 2
+left to right direction
+actor "Programador" as user
+actor "Controlador" as rpi
+rectangle Protocolos {
+  usecase "HTTP" as UC1
+  usecase "MQTT" as UC2
+} 
+user --> UC1 : Mensaje JSON
+user --> UC2
+UC1 --> rpi  
+@enduml
