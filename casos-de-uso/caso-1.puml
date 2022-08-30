@@ -5,7 +5,7 @@ rectangle Casa {
   usecase "Fabricante 1" as UC1
   usecase "Fabricante 2" as UC2
   usecase "Fabricante 3" as UC3
-}
+} 
 fc --> UC1 : Zigbee
 fc --> UC2 : Zigbee
 fc --> UC3 : Z-Wave
