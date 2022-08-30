@@ -10,5 +10,5 @@ rectangle Casa {
 fc --> UC1 : Zigbee 
 fc --> UC2 : Zigbee 
 fc --> UC3 : Z-Wave
-fc --> UC3 : Wifi 
+fc --> UC4 : Wifi 
 @enduml
