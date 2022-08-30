@@ -1,12 +1,12 @@
 @startuml
 left to right direction
-actor "Food Critic" as fc
-rectangle Restaurant {
-  usecase "Eat Food" as UC1
-  usecase "Pay for Food" as UC2
-  usecase "Drink" as UC3
+actor "Controlador" as fc
+rectangle Casa {
+  usecase "Fabricante 1" as UC1
+  usecase "Fabricante 2" as UC2
+  usecase "Fabricante 3" as UC3
 }
-fc --> UC1
-fc --> UC2
-fc --> UC3
+fc --> UC1 : Zigbee
+fc --> UC2 : Zigbee
+fc --> UC3 : Z-Wave
 @enduml
