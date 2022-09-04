@@ -1,0 +1,15 @@
+@startuml
+nwdiag {
+  network WAN {
+      address = "192.168.1.x/24"
+      router [address = "192.168.0.75"];
+  }
+  network LAN {
+      address = "192.168.0.x/24"
+
+      bombilla [address = "192.168.0.100"];
+      RPI [address = "192.168.0.102"];
+      router [address = "192.168.0.1"]
+  }
+}
+@enduml
