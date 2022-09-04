@@ -1,0 +1,37 @@
+@startuml
+scale 500 width
+[*] --> Inicializacion
+
+state Inicializacion {
+  [*] --> UbuntuStart: SistemaRecibeAlimentacion
+  UbuntuStart --> SnapStarted : SnapStart
+  SnapStarted --> DockerStarted : DockerStart
+  DockerStarted --> OpenHabStarted: OHStart
+  DockerStarted --> MqttServerStarted: MqttStart
+  DockerStarted --> DeconzStarted: DeconzStart
+  DockerStarted --> TuyaMqttStarted: ContainerStart
+  OpenHabStarted --> AllModulesStarted
+  MqttServerStarted --> AllModulesStarted
+  DeconzStarted --> AllModulesStarted
+  TuyaMqttStarted --> AllModulesStarted
+  AllModulesStarted --> Operacion: EvListoParaOperar
+}
+
+state Operacion {
+  [*] --> EscuchandoProgramacion
+  [*] --> AplicarProgramacion
+  EscuchandoProgramacion --> EvaluarProgramacion: EvProgramacionRecibida
+  EvaluarProgramacion --> AlmacenaProgramacion: EvProgramacionCorrecta
+  EvaluarProgramacion --> EscuchandoProgramacion: EvProgramacionIncorrecta
+  AlmacenaProgramacion --> EscuchandoProgramacion
+
+  state AplicarProgramacion {
+    state "Cada 5 minutos" as long1
+    long1 : Timeout
+    [*] --> long1
+    long1 -->  LeerProgramacion: 5 minutos transcurridos
+    LeerProgramacion --> EnviarProgramacion
+    EnviarProgramacion --> long1
+  }
+}
+@enduml
