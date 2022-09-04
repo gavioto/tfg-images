@@ -1,4 +1,4 @@
-@startuml caso de uso 2
+@startuml caso de uso 1
 left to right direction
 actor "Controlador" as fc
 rectangle Casa {
