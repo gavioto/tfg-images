@@ -1,15 +1,49 @@
 @startuml
 nwdiag {
-  network WAN {
-      address = "192.168.1.x/24"
-      router [address = "192.168.0.75"];
+  internet [shape = cloud, description = "Internet", width=150, height=75]; 
+  internet -- router_casa;
+
+  // define group outside of network definitions
+  group {
+    color = "#AAFFAA";
+    description = "TFG"
+
+    RPI;
+    Switch01;
+    Switch02;
+    Switch03;
+    Switch04;
   }
-  network LAN {
+
+  group {
+    color = "#FFAAAA"
+    description = "Opcional"
+
+    router_casa;
+  }
+
+  network LAN_CASA {
+      address = "192.168.1.x/24"
+
+      router_casa;
+      router_wifi [address = "192.168.1.75"];
+      portatil_desarrollo;
+  }
+  network LAN_DOMOTICA {
       address = "192.168.0.x/24"
 
-      bombilla [address = "192.168.0.100"];
       RPI [address = "192.168.0.102"];
-      router [address = "192.168.0.1"]
+      Switch03 [address = "192.168.0.100", shape = "card"];
+      router_wifi [address = "192.168.0.1"]
+  }
+  network Zigbee {
+    RPI;
+    Switch01 [shape = "card"];
+  }
+  network zWave {
+    RPI;
+    Switch02 [shape = "card"];
+    Switch04 [shape = "card"];
   }
 }
 @enduml
