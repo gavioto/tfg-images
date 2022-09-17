@@ -32,7 +32,7 @@ nwdiag {
   network LAN_DOMOTICA {
       address = "192.168.0.x/24"
 
-      RPI [address = "192.168.0.102"];
+      RPI [address = "192.168.0.101, 192.168.0.102"];
       Switch03 [address = "192.168.0.100", shape = "card"];
       router_wifi [address = "192.168.0.1"]
   }
