@@ -1,0 +1,35 @@
+@startuml
+
+skinparam BackgroundColor transparent
+
+cloud "aggregador" {
+  HTTP -> OpenHAB : recibe
+}
+
+package RaspberryPi {
+   component "Ubuntu Core" as UbuntuCore {
+      component Snap{
+        component Docker {
+            component OpenHAB {
+            } 
+            component deconZ {
+            }
+            component Mosquitto {
+            } 
+            component "tuya-mqtt" as tuyamqtt {
+            }
+        }
+      }  
+   }
+}
+
+OpenHAB <..> Mosquitto: mqtt
+tuyamqtt <..right> Mosquitto: mqtt
+
+OpenHAB <..> deconZ : HTTP+Websocket
+
+deconZ .> zigbee_serial_adapter : usa
+OpenHAB .> zwave_serial_adapter : usa
+tuyamqtt ..left> wifi_adapter: usa
+
+@enduml
