@@ -1,0 +1,27 @@
+@startuml
+
+skinparam BackgroundColor transparent
+
+cloud "aggregador" {
+  HTTP -> OpenHAB : recibe
+}
+
+package RaspberryPi {
+   component "Ubuntu Core" as UbuntuCore {
+      component Snap{
+        component Docker {
+            component OpenHAB {
+            } 
+            component deconZ {
+            }
+        }
+      }  
+   }
+}
+
+OpenHAB <..> deconZ : HTTP+Websocket
+
+deconZ .> zigbee_serial_adapter : usa
+OpenHAB .> zwave_serial_adapter : usa
+
+@enduml
